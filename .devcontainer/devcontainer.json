@@ -1,0 +1,24 @@
+{
+  "name": "ShopEZ E-Commerce",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "forwardPorts": [5000, 5173],
+  "portsAttributes": {
+    "5173": {
+      "label": "ShopEZ Storefront",
+      "onAutoForward": "openBrowser"
+    },
+    "5000": {
+      "label": "ShopEZ Backend API",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "npm run install:all",
+  "postStartCommand": "npm run dev",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.tabSize": 2
+      }
+    }
+  }
+}
