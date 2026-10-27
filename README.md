@@ -1,16 +1,32 @@
 # ShopEZ E-Commerce Application
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=gopaljamadar70-sudo/ShopEZ-Ecommerce)
+
 ShopEZ is a modern full-stack e-commerce application built with React, Node.js, Express, and MongoDB. It features a complete shopping flow, authenticated order management, real-time discount coupon validation, and an administrative control panel.
 
 ---
 
-## ⚡ Quick Start (Localhost Execution)
+## 🚀 1-Click Run on Localhost via GitHub (Instant Cloud Preview)
+
+Click the badge above or use the link below to run the app directly in your browser:
+
+👉 **[Launch ShopEZ on GitHub Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=gopaljamadar70-sudo/ShopEZ-Ecommerce)**
+
+The pre-configured [`.devcontainer`](.devcontainer/devcontainer.json) will automatically:
+1. Initialize the Node container
+2. Run `npm run install:all`
+3. Launch `npm run dev`
+4. Automatically forward and open **`http://localhost:5173`** in your browser!
+
+---
+
+## ⚡ Quick Start on Your Local Machine
 
 ### 1. Prerequisites
 - **Node.js** (v18.0.0 or higher)
 - **npm** (v9.0.0 or higher)
 
-*(MongoDB is embedded in-memory by default via `mongodb-memory-server` for zero-configuration setup, or you can configure an external MongoDB cluster in `backend/.env`)*
+*(MongoDB runs in-memory by default via `mongodb-memory-server` for zero-configuration setup, or you can configure an external MongoDB cluster in `backend/.env`)*
 
 ### 2. Install Dependencies
 ```bash
@@ -28,19 +44,9 @@ npm run dev
 
 ---
 
-## ☁️ Run Online via GitHub Codespaces (1-Click Cloud Localhost)
-
-You can launch this entire full-stack project in an interactive cloud environment directly from your GitHub browser:
-1. Click **Code** (green button) on GitHub.
-2. Select the **Codespaces** tab.
-3. Click **Create codespace on main**.
-4. The devcontainer will automatically install dependencies, start both backend and frontend servers, and open port `5173` in a new browser tab.
-
----
-
 ## 🧪 Run Automated Tests
 
-To run the backend integration test suite:
+To run the backend integration and QA test suite:
 ```bash
 npm test
 ```
@@ -50,10 +56,10 @@ npm test
 ## 🔑 Pre-Configured Test Accounts & Coupons
 
 ### Accounts:
-| Role | Email | Password |
-|---|---|---|
-| **Admin** | `admin@shopez.com` | `password123` |
-| **Customer** | `john@example.com` | `password123` |
+| Role | Email | Password | Access |
+|---|---|---|---|
+| **Admin** | `admin@shopez.com` | `password123` | Storefront & Admin Management Console |
+| **Customer** | `john@example.com` | `password123` | Storefront, Checkout & Order History |
 
 ### Promotional Coupons:
 - `WELCOME10`: 10% discount on purchases over $20
