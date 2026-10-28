@@ -4,11 +4,10 @@
 
 ---
 
-### Student & Project Identification
-- **Student Name:** Gopal Jamadar
+### Project Identification
+- **Project Name:** ShopEZ E-Commerce Application
 - **Department / Class:** Computer Science & Engineering / Final Year B.Tech
 - **College / Institution:** Department of Computer Engineering
-- **Project Name:** ShopEZ E-Commerce Application
 
 ---
 
@@ -31,7 +30,7 @@ The client single-page application (SPA) communicates with the backend via secur
 # PART 1 — IDEATION PHASE
 
 ### 1.1 Define the Problem Statements
-| Date | 28 October 2026 | Project Name | ShopEZ E-Commerce Application | Maximum Marks | 2 Marks |
+| Project Name | ShopEZ E-Commerce Application | Phase | Problem Statements | Maximum Marks | 2 Marks |
 |---|---|---|---|---|---|
 
 | Problem Statement | I am (Customer) | I am trying to | But | Because | Which makes me feel |
@@ -42,7 +41,7 @@ The client single-page application (SPA) communicates with the backend via secur
 ---
 
 ### 1.2 Brainstorming, Idea Generation, and Prioritization
-| Date | 28 October 2026 | Project Name | ShopEZ E-Commerce Application | Maximum Marks | 4 Marks |
+| Project Name | ShopEZ E-Commerce Application | Phase | Ideation & Prioritization | Maximum Marks | 4 Marks |
 |---|---|---|---|---|---|
 
 #### Core Problem Statement:
@@ -65,7 +64,7 @@ The client single-page application (SPA) communicates with the backend via secur
 ---
 
 ### 1.3 Empathy Map Canvas
-| Date | 28 October 2026 | Project Name | ShopEZ E-Commerce Application | Maximum Marks | 4 Marks |
+| Project Name | ShopEZ E-Commerce Application | Phase | Ideation & Prioritization | Maximum Marks | 4 Marks |
 |---|---|---|---|---|---|
 
 | Canvas Quadrant | Digital Shopper Persona | Store Administrator Persona |
