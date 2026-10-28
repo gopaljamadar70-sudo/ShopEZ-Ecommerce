@@ -1,0 +1,47 @@
+graph TD
+    subgraph ClientTier["Client Tier (Frontend - React 18 SPA)"]
+        UI["React SPA (Vite 6, Tailwind CSS)"]
+        Router["Client Hash Router (#/home, #/cart, #/admin)"]
+        State["State Management (AuthContext, CartContext)"]
+        Storage["Browser Storage (localStorage / JWT Token)"]
+        UI --> Router
+        Router --> State
+        State <--> Storage
+    end
+
+    subgraph APITier["Application Tier (Backend - Node.js & Express REST API)"]
+        Server["Express Server (port 5000)"]
+        AuthMid["Auth Middleware (JWT Verification)"]
+        AdminMid["RBAC Middleware (Admin Role Guard)"]
+        
+        subgraph Controllers["API Controllers"]
+            AuthCtrl["authController (/api/auth)"]
+            ProdCtrl["productController (/api/products)"]
+            OrderCtrl["orderController (/api/orders)"]
+            CouponCtrl["couponController (/api/coupons)"]
+            HealthCtrl["healthController (/api/health)"]
+        end
+
+        Server --> AuthMid
+        AuthMid --> AdminMid
+        Server --> Controllers
+    end
+
+    subgraph DataTier["Data Tier (Persistence - MongoDB ODM)"]
+        Mongoose["Mongoose 8.9 ODM"]
+        
+        subgraph Schemas["Data Models & Schemas"]
+            UserSchema["User Model (bcryptjs, role, email)"]
+            ProductSchema["Product Model (SKU, price, stock, ratings)"]
+            OrderSchema["Order Model (orderItems, payment, delivery)"]
+            CouponSchema["Coupon Model (discountPercentage, validity)"]
+        end
+
+        MongoDB[("MongoDB Database / In-Memory Server")]
+
+        Controllers --> Mongoose
+        Mongoose --> Schemas
+        Schemas --> MongoDB
+    end
+
+    ClientTier -->|"REST API Requests (HTTP / JSON)"| APITier

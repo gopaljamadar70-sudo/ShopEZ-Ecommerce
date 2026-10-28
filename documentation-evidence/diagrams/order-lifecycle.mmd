@@ -1,0 +1,29 @@
+stateDiagram-v2
+    [*] --> CartDraft: Customer adds items to cart
+    CartDraft --> CouponApplied: Apply promo code (e.g. WELCOME10)
+    CouponApplied --> CartDraft: Remove or update coupon
+    CartDraft --> CheckoutInitiated: Proceed to checkout
+    CouponApplied --> CheckoutInitiated: Proceed to checkout
+
+    CheckoutInitiated --> OrderCreated: Submit order (POST /api/orders)
+    
+    state OrderCreated {
+        [*] --> PendingPayment: Status = Pending, isPaid = false
+        PendingPayment --> PaymentSuccessful: Process payment (PUT /api/orders/:id/pay)
+        PendingPayment --> PaymentFailed: Payment rejected / timeout
+        PaymentFailed --> PendingPayment: Retry payment
+    }
+
+    PaymentSuccessful --> Processing: isPaid = true, paidAt recorded
+    
+    state FulfillmentWorkflow {
+        [*] --> Processing: Order queued for warehouse pick
+        Processing --> Shipped: Admin adds tracking number (PUT /api/orders/:id/status)
+        Shipped --> Delivered: Carrier delivery confirmation (isDelivered = true)
+    }
+
+    Processing --> Cancelled: Customer/Admin cancels order
+    PendingPayment --> Cancelled: Order expired or cancelled
+
+    Delivered --> [*]: Order Completed & Archived
+    Cancelled --> [*]: Order Closed / Stock Restocked

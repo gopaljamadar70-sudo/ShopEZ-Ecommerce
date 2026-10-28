@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NotificationProvider } from './context/NotificationContext.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { CartProvider } from './context/CartContext.jsx';
@@ -13,21 +13,67 @@ import { UserProfilePage } from './pages/UserProfilePage.jsx';
 import { LoginPage } from './pages/LoginPage.jsx';
 import { RegisterPage } from './pages/RegisterPage.jsx';
 import { AdminDashboardPage } from './pages/AdminDashboardPage.jsx';
+import { api } from './services/api.js';
 
 export function ShopEZApp() {
-  const [currentView, setCurrentView] = useState('home');
-  const [selectedProductId, setSelectedProductId] = useState(null);
-  const [lastOrderId, setLastOrderId] = useState(null);
+  const getInitialView = () => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#/', '').replace('#', '');
+      return hash || 'home';
+    }
+    return 'home';
+  };
+
+  const [currentView, setViewInternal] = useState(getInitialView);
+  const [selectedProductId, setSelectedProductId] = useState(() => {
+    return typeof localStorage !== 'undefined' ? localStorage.getItem('shopez_selected_product') : null;
+  });
+  const [lastOrderId, setLastOrderId] = useState(() => {
+    return typeof localStorage !== 'undefined' ? localStorage.getItem('shopez_last_order') : null;
+  });
   const [searchQuery, setSearchQuery] = useState('');
+
+  const setCurrentView = (view) => {
+    setViewInternal(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = `#/${view}`;
+    }
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.replace('#/', '').replace('#', '');
+      if (hash) setViewInternal(hash);
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  // Ensure selectedProductId has a fallback if viewing product-detail directly
+  useEffect(() => {
+    if (currentView === 'product-detail' && !selectedProductId) {
+      api.getProducts().then((res) => {
+        if (res.success && res.data && res.data.length > 0) {
+          setSelectedProductId(res.data[0]._id);
+        }
+      }).catch(() => {});
+    }
+  }, [currentView, selectedProductId]);
 
   const handleSelectProduct = (productId) => {
     setSelectedProductId(productId);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('shopez_selected_product', productId);
+    }
     setCurrentView('product-detail');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleOrderPlaced = (orderId) => {
     setLastOrderId(orderId);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('shopez_last_order', orderId);
+    }
     setCurrentView('order-success');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

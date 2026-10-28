@@ -1,0 +1,115 @@
+================================================================================
+SHOPEZ E-COMMERCE APPLICATION - COMPREHENSIVE RUNTIME & VERIFICATION TEST LOG
+Generated At: 2026-10-28T11:45:40.329Z
+Host OS: Microsoft Windows 11 Enterprise (win32 x64)
+Node Runtime: v24.22.0
+Target Workspace: C:\ShopEZ
+Repository URL: https://github.com/gopaljamadar70-sudo/ShopEZ-Ecommerce
+================================================================================
+
+================================================================================
+PART 1: AUTOMATED INTEGRATION & UNIT TEST SUITE (VITEST)
+================================================================================
+
+> shopez-backend@1.0.0 test
+> vitest run
+
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mC:/ShopEZ/backend[39m
+
+[90mstdout[2m | tests/api.test.js[2m > [22m[2mShopEZ E-Commerce Backend Test Suite
+[22m[39m[MongoDB] No external MONGO_URI specified. Initializing embedded MongoDB server...
+
+[90mstdout[2m | tests/api.test.js[2m > [22m[2mShopEZ E-Commerce Backend Test Suite
+[22m[39m[MongoDB] Embedded in-memory MongoDB connected successfully at mongodb://127.0.0.1:59261/
+
+[90mstdout[2m | tests/api.test.js[2m > [22m[2mShopEZ E-Commerce Backend Test Suite
+[22m[39m[Seeder] Data imported successfully!
+
+[90mstdout[2m | tests/api.test.js[2m > [22m[2mShopEZ E-Commerce Backend Test Suite
+[22m[39m[MongoDB] Disconnected successfully
+
+ [32m✓[39m tests/api.test.js [2m([22m[2m24 tests[22m[2m)[22m[33m 2128[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m24 passed[39m[22m[90m (24)[39m
+[2m   Start at [22m 17:15:41
+[2m   Duration [22m 5.21s[2m (transform 282ms, setup 0ms, collect 2.09s, tests 2.13s, environment 0ms, prepare 403ms)[22m
+
+
+================================================================================
+PART 2: LIVE BACKEND REST API ENDPOINT VALIDATION
+================================================================================
+
+--- TEST 2.1: HEALTH STATUS (GET /api/health) ---
+Status: HTTP 200 OK
+{
+  "status": "ok",
+  "service": "ShopEZ E-Commerce API",
+  "uptime": "1407s",
+  "timestamp": "2026-10-28T11:45:47.577Z",
+  "database": "connected"
+}
+
+--- TEST 2.2: PRODUCT CATALOG (GET /api/products) ---
+Status: HTTP 200 OK
+Success Flag: true
+Products Count: 8
+Item 1: "EcoComfort Organic Cotton Casual Hoodie" ($54) - Category: Fashion
+Item 2: "Stainless Steel Vacuum Insulated Travel Tumbler 24oz" ($24.99) - Category: Home & Kitchen
+
+--- TEST 2.3: USER AUTHENTICATION & JWT GENERATION (POST /api/auth/login) ---
+Status: HTTP 200 OK
+Authenticated User: John Doe
+Role Assigned: customer
+Email Verified: john@example.com
+Bearer Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...[REDACTED_FOR_SECURITY]
+
+--- TEST 2.4: COUPON VALIDATION ENGINE (POST /api/coupons/validate) ---
+Status: HTTP 200 OK
+{
+  "success": true,
+  "data": {
+    "code": "WELCOME10",
+    "discountPercentage": 10,
+    "discountAmount": 25,
+    "minPurchaseAmount": 20
+  }
+}
+
+--- TEST 2.5: CUSTOMER ORDER QUERY (GET /api/orders/myorders) ---
+Status: HTTP 200 OK
+Orders Retrieved: 4
+Latest Order ID: 6ae1deceaab3edf072bd2c2f
+Total Paid Amount: $101.07
+Order Status: Delivered
+Is Paid: true
+Shipping Street: 456 Market St, San Francisco
+
+================================================================================
+PART 3: LIVE FRONTEND VITE WEB SERVER VALIDATION
+================================================================================
+
+Frontend Dev Server: HTTP 200 OK
+Index HTML Size: 1164 bytes
+Root Mount Container (<div id="root">): PRESENT
+Vite Client Script Hook (@vite/client): PRESENT
+React Entry Script (/src/main.jsx): PRESENT
+
+================================================================================
+PART 4: SCREENSHOT CAPTURE AUDIT
+================================================================================
+
+[VERIFIED SCREENSHOT] 01-home-or-landing.png           258792 bytes | Modified: 2026-10-28T11:38:58.163Z
+[VERIFIED SCREENSHOT] 02-signup.png                     43871 bytes | Modified: 2026-10-28T11:39:01.539Z
+[VERIFIED SCREENSHOT] 03-login.png                      43357 bytes | Modified: 2026-10-28T11:39:04.933Z
+[VERIFIED SCREENSHOT] 04-main-dashboard.png            354823 bytes | Modified: 2026-10-28T11:39:08.945Z
+[VERIFIED SCREENSHOT] 05-primary-feature-input.png      51784 bytes | Modified: 2026-10-28T11:39:12.845Z
+[VERIFIED SCREENSHOT] 06-primary-feature-result.png     40992 bytes | Modified: 2026-10-28T11:39:16.792Z
+[VERIFIED SCREENSHOT] 07-history-or-records.png         78982 bytes | Modified: 2026-10-28T11:39:20.693Z
+[VERIFIED SCREENSHOT] 08-admin-or-settings.png          84020 bytes | Modified: 2026-10-28T11:39:24.594Z
+[VERIFIED SCREENSHOT] 09-responsive-mobile.png         181783 bytes | Modified: 2026-10-28T11:39:28.527Z
+
+================================================================================
+VERIFICATION RESULT: ALL CHECKS PASSED (100% OPERATIONAL)
+================================================================================

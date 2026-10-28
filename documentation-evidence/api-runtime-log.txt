@@ -1,0 +1,46 @@
+================================================================================
+SHOPEZ E-COMMERCE APPLICATION - RUNTIME & VERIFICATION TEST LOG
+Generated At: 2026-10-28T11:43:52.195Z
+Host OS: Microsoft Windows 11 Enterprise (win32 x64)
+Node Runtime: v24.22.0
+================================================================================
+
+--- SECTION 1: LIVE API SERVICE HEALTH CHECK ---
+GET http://localhost:5000/api/health -> HTTP 200
+{
+  "status": "ok",
+  "service": "ShopEZ E-Commerce API",
+  "uptime": "1291s",
+  "timestamp": "2026-10-28T11:43:52.277Z",
+  "database": "connected"
+}
+
+--- SECTION 2: PRODUCT CATALOG RETRIEVAL ENDPOINT ---
+GET http://localhost:5000/api/products -> HTTP 200
+Success: true | Total Products in DB: 8
+Sample Item #1: EcoComfort Organic Cotton Casual Hoodie | $54 | SKU: 6ae1daf6aab3edf072bd2b02
+Sample Item #2: Stainless Steel Vacuum Insulated Travel Tumbler 24oz | $24.99 | SKU: 6ae1daf6aab3edf072bd2b06
+
+--- SECTION 3: AUTHENTICATION FLOW (LOGIN & JWT) ---
+POST http://localhost:5000/api/auth/login -> HTTP 200
+User: John Doe (john@example.com) | Role: customer
+JWT Token Received: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...[REDACTED_FOR_SECURITY]
+
+--- SECTION 4: PROMOTIONAL COUPON VALIDATION ---
+POST http://localhost:5000/api/coupons/apply -> HTTP 404
+{
+  "success": false,
+  "message": "Resource Not Found - /api/coupons/apply",
+  "stack": "Error: Resource Not Found - /api/coupons/apply\n    at notFound (file:///C:/ShopEZ/backend/src/middleware/errorMiddleware.js:2:17)\n    at Layer.handle [as handle_request] (C:\\ShopEZ\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\ShopEZ\\backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\ShopEZ\\backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at router.process_params (C:\\ShopEZ\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\ShopEZ\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\ShopEZ\\backend\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\ShopEZ\\backend\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at router.handle (C:\\ShopEZ\\backend\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\ShopEZ\\backend\\node_modules\\express\\lib\\router\\index.js:47:12)"
+}
+
+--- SECTION 5: CUSTOMER ORDER HISTORY QUERY ---
+GET http://localhost:5000/api/orders/myorders -> HTTP 200
+Total Customer Orders Found: 4
+Latest Order ID: 6ae1deceaab3edf072bd2c2f | Total: $101.07 | Status: Delivered | Paid: true
+
+--- SECTION 6: FRONTEND VITE DEV SERVER HEALTH ---
+GET http://localhost:5173/ -> HTTP 200 OK
+HTML Document Length: 1164 bytes
+Contains Root Container: true
+Contains Vite Client Script: true

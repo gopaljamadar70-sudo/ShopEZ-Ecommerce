@@ -1,0 +1,31 @@
+sequenceDiagram
+    autonumber
+    actor User as Customer / Browser
+    participant Client as React SPA (Frontend)
+    participant API as Express API Server
+    participant Auth as JWT Auth Middleware
+    participant Controller as Order Controller
+    participant Model as Mongoose ODM
+    participant DB as MongoDB Database
+
+    User->>Client: Clicks "Place Order"
+    Client->>Client: Retrieves JWT token & cart items from localStorage
+    Client->>API: POST /api/orders (Bearer JWT + order payload)
+    API->>Auth: Verify Authorization Header
+    alt Token Invalid or Missing
+        Auth-->>Client: 401 Unauthorized
+        Client-->>User: Redirect to Login screen
+    else Token Valid
+        Auth->>API: Attach req.user (id, email, role)
+        API->>Controller: createOrder(req, res)
+        Controller->>Model: Validate stock & recalculate pricing
+        Model->>DB: Query Product collection (price & countInStock)
+        DB-->>Model: Product documents
+        Controller->>Model: Create new Order document
+        Model->>DB: Insert Order into 'orders' collection
+        DB-->>Model: Saved Order document with _id
+        Controller-->>API: 201 Created (JSON Order object)
+        API-->>Client: HTTP 201 Response
+        Client->>Client: Clear Cart state in CartContext
+        Client-->>User: Navigate to /#/order-success with receipt
+    end
