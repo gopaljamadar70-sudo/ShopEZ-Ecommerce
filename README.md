@@ -20,6 +20,7 @@ Connects **Digital Shoppers** and **Store Administrators** into a secure, reacti
 [🔑 Demo Accounts](#-pre-configured-demo-accounts--coupons) &nbsp;|&nbsp;
 [✨ Key Capabilities](#-key-system-capabilities) &nbsp;|&nbsp;
 [🏛️ System Architecture](#-system-architecture) &nbsp;|&nbsp;
+[📸 Screenshots](#-application-screenshot-gallery) &nbsp;|&nbsp;
 [📑 Project Documentation](#-academic-documentation--deliverables) &nbsp;|&nbsp;
 [🧪 Automated Testing & QA](#-automated-testing--qa-evidence) &nbsp;|&nbsp;
 [📡 REST API Reference](#-rest-api-documentation)
@@ -256,10 +257,56 @@ Documentation/
 │   └── Solution Architecture.docx
 ├── 5. Project Development/
 │   └── User Acceptance Testing FSD.docx
-└── ShopEZ_Project_Phase_Documentation.md    # Complete 5-Phase Master Capstone Report
+├── Project Report/
+│   └── Shopez_Project_Report_21_Pages.docx      # 📘 Comprehensive 21-Page Formal Academic Report
+└── ShopEZ_Project_Phase_Documentation.md        # Complete 5-Phase Master Capstone Report
 ```
 
-👉 **[View Complete Project Phase Documentation](Documentation/ShopEZ_Project_Phase_Documentation.md)**
+### 📘 Core Project Documentation Downloads & Links
+- 📄 **[Download 21-Page Comprehensive Project Report (Shopez_Project_Report_21_Pages.docx)](Documentation/Project%20Report/Shopez_Project_Report_21_Pages.docx)**  
+  *Complete 21-page college capstone report formatted according to formal academic rubrics with architecture diagrams, schema specifications, and evaluation results.*
+- 📑 **[View 5-Phase Master Capstone Documentation (ShopEZ_Project_Phase_Documentation.md)](Documentation/ShopEZ_Project_Phase_Documentation.md)**  
+  *Master markdown documentation covering Requirement Analysis, Ideation, Planning, Design, and Development phases.*
+- 🔍 **[Browse Verified Technical Evidence Package Directory](Shopez_Documentation_Evidence/)**  
+  *Includes `technical_report.md` (18-section formal technical audit), `source_code_structure.txt`, `test_results.md`, `run_instructions.txt`, and `screenshot_index.md`.*
+
+---
+
+## 📸 Application Screenshot Gallery
+
+Genuine screenshots captured directly from the running ShopEZ platform (Headless Chrome via DevTools Protocol):
+
+| 01. Storefront Landing Page | 02. Category Filtered Catalog (Electronics) |
+| :---: | :---: |
+| <img src="Shopez_Documentation_Evidence/screenshots/01_Homepage.png" width="480" alt="Homepage" /> | <img src="Shopez_Documentation_Evidence/screenshots/02_Product_Listing.png" width="480" alt="Product Listing" /> |
+
+| 03. Real-Time Search & Filtering | 04. Granular Product Details & Specifications |
+| :---: | :---: |
+| <img src="Shopez_Documentation_Evidence/screenshots/03_Search_and_Filtering.png" width="480" alt="Search and Filtering" /> | <img src="Shopez_Documentation_Evidence/screenshots/04_Product_Details.png" width="480" alt="Product Details" /> |
+
+| 05. User Registration | 06. Authentication & Demo Account Login |
+| :---: | :---: |
+| <img src="Shopez_Documentation_Evidence/screenshots/05_Registration_Page.png" width="480" alt="Registration" /> | <img src="Shopez_Documentation_Evidence/screenshots/06_Login_Page.png" width="480" alt="Login" /> |
+
+| 07. Shopping Cart with Active Promo Coupon | 08. Multi-Step Checkout & Address Entry |
+| :---: | :---: |
+| <img src="Shopez_Documentation_Evidence/screenshots/07_Shopping_Cart.png" width="480" alt="Shopping Cart" /> | <img src="Shopez_Documentation_Evidence/screenshots/08_Checkout_and_Address.png" width="480" alt="Checkout" /> |
+
+| 09. Order Confirmation & MongoDB Receipt | 10. Customer Order History & Delivery Tracking |
+| :---: | :---: |
+| <img src="Shopez_Documentation_Evidence/screenshots/09_Order_Confirmation.png" width="480" alt="Order Confirmation" /> | <img src="Shopez_Documentation_Evidence/screenshots/10_Order_History.png" width="480" alt="Order History" /> |
+
+| 11. Customer Profile Management | 12. Admin Management Console (Revenue KPIs) |
+| :---: | :---: |
+| <img src="Shopez_Documentation_Evidence/screenshots/11_User_Profile.png" width="480" alt="User Profile" /> | <img src="Shopez_Documentation_Evidence/screenshots/12_Admin_Dashboard.png" width="480" alt="Admin Dashboard" /> |
+
+| 13. Admin Inventory CRUD & Add Product Modal | 14. Admin Order Fulfillment & Dispatch Hub |
+| :---: | :---: |
+| <img src="Shopez_Documentation_Evidence/screenshots/13_Admin_Product_Management.png" width="480" alt="Admin Product Management" /> | <img src="Shopez_Documentation_Evidence/screenshots/14_Admin_Order_Management.png" width="480" alt="Admin Order Management" /> |
+
+| 15. Responsive Mobile Storefront Layout (390×844) |
+| :---: |
+| <img src="Shopez_Documentation_Evidence/screenshots/15_Responsive_Mobile.png" width="300" alt="Responsive Mobile" /> |
 
 ---
 
