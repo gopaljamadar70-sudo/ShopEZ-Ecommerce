@@ -1,0 +1,95 @@
+====================================================================================================
+SHOPEZ E-COMMERCE APPLICATION — INSTALLATION & RUN INSTRUCTIONS
+====================================================================================================
+Repository: https://github.com/gopaljamadar70-sudo/ShopEZ-Ecommerce
+Local Workspace Root: C:\ShopEZ
+Target Platform: Windows 10/11, macOS, Linux (Cross-platform)
+Runtime Requirements: Node.js >= 18.0.0 (Node 24 LTS recommended), Git
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+1. CLONING THE REPOSITORY
+----------------------------------------------------------------------------------------------------
+Open a terminal (PowerShell, Command Prompt, or Bash) and execute:
+
+  git clone https://github.com/gopaljamadar70-sudo/ShopEZ-Ecommerce.git
+  cd ShopEZ-Ecommerce
+
+----------------------------------------------------------------------------------------------------
+2. INSTALLING DEPENDENCIES
+----------------------------------------------------------------------------------------------------
+ShopEZ utilizes a decoupled MERN stack architecture requiring separate dependency installation for
+the backend REST API and the frontend Single-Page Application (SPA):
+
+Step 2.1: Install Backend Dependencies
+  cd backend
+  npm install
+  cd ..
+
+Step 2.2: Install Frontend Dependencies
+  cd frontend
+  npm install
+  cd ..
+
+----------------------------------------------------------------------------------------------------
+3. ENVIRONMENT CONFIGURATION (.env)
+----------------------------------------------------------------------------------------------------
+ShopEZ is architected with intelligent defaults requiring ZERO manual configuration for local testing:
+
+- If no MONGO_URI is specified in backend/.env, the backend automatically initializes an isolated,
+  embedded in-memory MongoDB engine (mongodb-memory-server) and auto-seeds catalog products and users.
+- A template file backend/.env.example is provided for custom deployments:
+
+  PORT=5000
+  NODE_ENV=development
+  MONGO_URI=mongodb://localhost:27017/shopez
+  JWT_SECRET=shopez_super_secure_jwt_secret_key_2026_eval
+  JWT_EXPIRE=30d
+  CLIENT_URL=http://localhost:5173
+
+----------------------------------------------------------------------------------------------------
+4. STARTING THE APPLICATION
+----------------------------------------------------------------------------------------------------
+Two independent terminal windows are required to run the full-stack development environment:
+
+TERMINAL 1: Launch Backend REST API (Port 5000)
+  cd backend
+  npm run dev
+  # Alternatively, run: node src/server.js
+  # Server will listen at: http://localhost:5000
+  # Health diagnostic endpoint: http://localhost:5000/api/health
+
+TERMINAL 2: Launch Frontend Vite Web Server (Port 5173)
+  cd frontend
+  npm run dev
+  # Vite will compile and serve at: http://localhost:5173/
+
+----------------------------------------------------------------------------------------------------
+5. PRE-CONFIGURED DEMO CREDENTIALS & COUPONS
+----------------------------------------------------------------------------------------------------
+The initial database seed includes pre-configured administrative and customer accounts:
+
+ADMINISTRATOR ACCOUNT:
+  Email:    admin@shopez.com
+  Password: password123
+  Role:     admin
+  Access:   Admin Management Console (http://localhost:5173/#/admin), Inventory CRUD, Revenue KPIs
+
+CUSTOMER ACCOUNT:
+  Email:    john@example.com
+  Password: password123
+  Role:     customer
+  Access:   Shopping Cart, Checkout, Order Placement, Order History Tracking
+
+ACTIVE PROMOTIONAL COUPONS:
+  Code:     WELCOME10  -> 10% discount on orders exceeding $20.00
+  Code:     SAVE20     -> 20% discount on orders exceeding $50.00
+
+----------------------------------------------------------------------------------------------------
+6. RUNNING AUTOMATED TESTS
+----------------------------------------------------------------------------------------------------
+To run the automated Vitest test suite (24 tests covering auth, products, orders, coupons, analytics):
+
+  cd backend
+  npm test
+====================================================================================================

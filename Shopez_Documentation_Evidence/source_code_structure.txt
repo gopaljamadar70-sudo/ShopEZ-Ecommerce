@@ -1,0 +1,301 @@
+====================================================================================================
+SHOPEZ E-COMMERCE APPLICATION — SOURCE CODE STRUCTURE INVENTORY
+====================================================================================================
+Repository: https://github.com/gopaljamadar70-sudo/ShopEZ-Ecommerce
+Root Directory: C:\ShopEZ
+Audited Files: Full-stack MERN Application Source Tree (Excluding dependencies and build caches)
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+1. ROOT CONFIGURATION & SPECIFICATION FILES
+----------------------------------------------------------------------------------------------------
+Relative File Path: package.json
+File Purpose: Root NPM project manifest
+Main Responsibility: Defines top-level workspace scripts, project metadata, and multi-package management
+Related Feature / Module: Project Infrastructure & Workspace Orchestration
+
+Relative File Path: README.md
+File Purpose: Repository documentation and developer guide
+Main Responsibility: Outlines architecture, technology stack, setup commands, demo credentials, and API docs
+Related Feature / Module: Project Documentation
+
+Relative File Path: .gitignore
+File Purpose: Git version-control ignore rules
+Main Responsibility: Prevents committing node_modules, build artifacts, zip archives, environment secrets, and OS temp files
+Related Feature / Module: Version Control Configuration
+
+----------------------------------------------------------------------------------------------------
+2. BACKEND SERVER, DATABASE & CONFIGURATION FILES
+----------------------------------------------------------------------------------------------------
+Relative File Path: backend/package.json
+File Purpose: Backend dependency manifest and runtime scripts
+Main Responsibility: Manages backend dependencies (express, mongoose, jsonwebtoken, bcryptjs, cors, helmet, mongodb-memory-server) and scripts (dev, start, test)
+Related Feature / Module: Backend Runtime & Environment
+
+Relative File Path: backend/.env.example
+File Purpose: Environment variable specification template
+Main Responsibility: Documents required environment variable keys (PORT, MONGO_URI, JWT_SECRET, CLIENT_URL) without exposing sensitive credentials
+Related Feature / Module: Security & Environment Management
+
+Relative File Path: backend/src/server.js
+File Purpose: Backend server entry point
+Main Responsibility: Initializes Express application, connects to MongoDB, mounts security middlewares (Helmet, CORS), registers REST route endpoints, and establishes centralized error handlers
+Related Feature / Module: Application Server Core
+
+Relative File Path: backend/src/config/db.js
+File Purpose: MongoDB database connector and lifecycle manager
+Main Responsibility: Connects to MongoDB via Mongoose; automatically falls back to an embedded in-memory MongoDB instance (mongodb-memory-server) if no remote URI is configured
+Related Feature / Module: Persistence Tier / Database Connection
+
+----------------------------------------------------------------------------------------------------
+3. BACKEND DATA MODELS & SCHEMAS (MONGOOSE)
+----------------------------------------------------------------------------------------------------
+Relative File Path: backend/src/models/User.js
+File Purpose: User entity schema and authentication model
+Main Responsibility: Defines user data structures (name, email, password, role, avatar), enforces unique emails, and provides salted bcrypt pre-save password hashing and password comparison methods
+Related Feature / Module: Authentication & User Management
+
+Relative File Path: backend/src/models/Product.js
+File Purpose: Catalog product schema and inventory model
+Main Responsibility: Defines product attributes (name, description, price, category, brand, images, countInStock, rating, numReviews, isFeatured) and inventory constraints
+Related Feature / Module: Product Catalog & Inventory
+
+Relative File Path: backend/src/models/Order.js
+File Purpose: Customer order and fulfillment schema
+Main Responsibility: Records order items, quantities, shipping destination, payment method, transaction payment receipts, itemized prices, tax, delivery tracking numbers, and fulfillment status
+Related Feature / Module: Order Processing & Checkout
+
+Relative File Path: backend/src/models/Coupon.js
+File Purpose: Promotional discounting rules schema
+Main Responsibility: Defines discount codes, percentage rates, minimum spend qualifications, expiration timestamps, and global/per-user usage limits
+Related Feature / Module: Coupon & Promotion Engine
+
+----------------------------------------------------------------------------------------------------
+4. BACKEND CONTROLLERS (BUSINESS LOGIC)
+----------------------------------------------------------------------------------------------------
+Relative File Path: backend/src/controllers/authController.js
+File Purpose: User authentication controller
+Main Responsibility: Handles user registration, credentials authentication (login), JWT token generation, user profile retrieval, and profile updates
+Related Feature / Module: Authentication & RBAC
+
+Relative File Path: backend/src/controllers/productController.js
+File Purpose: Product catalog management controller
+Main Responsibility: Handles product listing with keyword search and category filtering, single product specification queries, and admin CRUD actions (create, edit, delete)
+Related Feature / Module: Catalog Browsing & Admin Inventory
+
+Relative File Path: backend/src/controllers/orderController.js
+File Purpose: Order processing and transaction controller
+Main Responsibility: Handles order placement, inventory verification, customer order history retrieval, order status tracking, payment recording, and administrative order status dispatch
+Related Feature / Module: Checkout & Order Management
+
+Relative File Path: backend/src/controllers/couponController.js
+File Purpose: Promotional coupon controller
+Main Responsibility: Handles real-time coupon code validation against minimum spend/expiration and administrative coupon CRUD operations
+Related Feature / Module: Discount Engine & Promotions
+
+Relative File Path: backend/src/controllers/analyticsController.js
+File Purpose: Administrative analytics and metrics controller
+Main Responsibility: Aggregates total revenue, sales volume, customer counts, and product metrics for the admin management dashboard
+Related Feature / Module: Executive Analytics & KPI Reporting
+
+----------------------------------------------------------------------------------------------------
+5. BACKEND MIDDLEWARE (SECURITY & AUDIT)
+----------------------------------------------------------------------------------------------------
+Relative File Path: backend/src/middleware/authMiddleware.js
+File Purpose: JWT authentication and Role-Based Access Control middleware
+Main Responsibility: Intercepts incoming requests, validates Bearer JWT tokens in authorization headers, attaches authenticated user records to req.user, and guards admin routes
+Related Feature / Module: API Security & Access Control
+
+Relative File Path: backend/src/middleware/auth.js
+File Purpose: Route protection alias middleware
+Main Responsibility: Re-exports token verification and user extraction middleware for modular route protection
+Related Feature / Module: API Security
+
+Relative File Path: backend/src/middleware/admin.js
+File Purpose: Administrative role guard middleware
+Main Responsibility: Verifies that the authenticated requester possesses 'admin' role privileges before executing protected operations
+Related Feature / Module: Role-Based Access Control
+
+Relative File Path: backend/src/middleware/errorMiddleware.js
+File Purpose: Centralized HTTP error handling middleware
+Main Responsibility: Intercepts unhandled 404 Not Found errors and catches unexpected internal server exceptions, formatting structured JSON error responses
+Related Feature / Module: Error Handling & Diagnostics
+
+----------------------------------------------------------------------------------------------------
+6. BACKEND ROUTES (REST API DEFINITIONS)
+----------------------------------------------------------------------------------------------------
+Relative File Path: backend/src/routes/authRoutes.js
+File Purpose: Authentication route declarations
+Main Responsibility: Maps endpoints (/register, /login, /profile) to authController methods with JWT protection
+Related Feature / Module: Authentication API
+
+Relative File Path: backend/src/routes/productRoutes.js
+File Purpose: Product catalog route declarations
+Main Responsibility: Maps endpoints (/, /:id, /categories, /top) to productController methods with admin guards
+Related Feature / Module: Product Catalog API
+
+Relative File Path: backend/src/routes/orderRoutes.js
+File Purpose: Order fulfillment route declarations
+Main Responsibility: Maps endpoints (/, /myorders, /:id, /:id/pay, /:id/status) to orderController methods
+Related Feature / Module: Order Management API
+
+Relative File Path: backend/src/routes/couponRoutes.js
+File Purpose: Coupon route declarations
+Main Responsibility: Maps endpoints (/validate, /, /:id, /:id/toggle) to couponController methods
+Related Feature / Module: Coupon API
+
+Relative File Path: backend/src/routes/analyticsRoutes.js
+File Purpose: Administrative metrics route declarations
+Main Responsibility: Maps endpoints (/dashboard) to analyticsController methods protected by admin guards
+Related Feature / Module: Analytics API
+
+----------------------------------------------------------------------------------------------------
+7. BACKEND SEEDER & AUTOMATED TESTS
+----------------------------------------------------------------------------------------------------
+Relative File Path: backend/src/seeder/products.js
+File Purpose: Seed data definition for products
+Main Responsibility: Contains 8 realistic, high-resolution catalog products across Fashion, Electronics, Audio, Wearables, and Home categories
+Related Feature / Module: Data Seeding & Initialization
+
+Relative File Path: backend/src/seeder/users.js
+File Purpose: Seed data definition for users
+Main Responsibility: Contains pre-configured admin (admin@shopez.com) and customer (john@example.com) accounts with pre-hashed bcrypt passwords
+Related Feature / Module: Data Seeding & Initialization
+
+Relative File Path: backend/src/seeder/seeder.js
+File Purpose: Database migration and initialization CLI
+Main Responsibility: Populates or flushes MongoDB collections for clean development and testing workflows
+Related Feature / Module: Database Management
+
+Relative File Path: backend/tests/api.test.js
+File Purpose: Automated Vitest API integration test suite
+Main Responsibility: Executes 24 end-to-end integration tests covering health check, authentication, product CRUD, orders, payments, coupons, and analytics
+Related Feature / Module: Quality Assurance & Testing
+
+----------------------------------------------------------------------------------------------------
+8. FRONTEND BUILD, STYLING & CONFIGURATION
+----------------------------------------------------------------------------------------------------
+Relative File Path: frontend/package.json
+File Purpose: Frontend dependency manifest
+Main Responsibility: Manages React 18, Vite 6, Tailwind CSS, Lucide icons, and frontend development scripts
+Related Feature / Module: Frontend Architecture
+
+Relative File Path: frontend/vite.config.js
+File Purpose: Vite build configuration
+Main Responsibility: Configures React plugin, build optimization targets, and local proxy configuration to backend port 5000
+Related Feature / Module: Frontend Build Pipeline
+
+Relative File Path: frontend/tailwind.config.js
+File Purpose: Tailwind CSS design configuration
+Main Responsibility: Defines responsive breakpoints, color palettes, border radiuses, and custom utility classes
+Related Feature / Module: UI Design System
+
+Relative File Path: frontend/postcss.config.js
+File Purpose: PostCSS styling pipeline
+Main Responsibility: Chains Tailwind CSS and Autoprefixer processors for cross-browser CSS compatibility
+Related Feature / Module: CSS Processing
+
+Relative File Path: frontend/index.html
+File Purpose: Single-Page Application HTML entry point
+Main Responsibility: Defines HTML5 shell, viewport metadata, page title, and React root mount point (<div id="root">)
+Related Feature / Module: Frontend Shell
+
+----------------------------------------------------------------------------------------------------
+9. FRONTEND STATE MANAGEMENT & SERVICES
+----------------------------------------------------------------------------------------------------
+Relative File Path: frontend/src/main.jsx
+File Purpose: React application root bootstrapping
+Main Responsibility: Mounts the React component tree into the DOM root element
+Related Feature / Module: Frontend Bootstrapping
+
+Relative File Path: frontend/src/App.jsx
+File Purpose: Single-Page Application container and router
+Main Responsibility: Manages client-side hash routing, layout wrapping, context provider hierarchy, and view dispatching
+Related Feature / Module: Application Routing & Layout
+
+Relative File Path: frontend/src/services/api.js
+File Purpose: Centralized HTTP client service
+Main Responsibility: Encapsulates all fetch calls to the backend API, automatically injects Authorization Bearer tokens from localStorage, and formats response errors
+Related Feature / Module: API Integration Client
+
+Relative File Path: frontend/src/context/AuthContext.jsx
+File Purpose: Authentication state context provider
+Main Responsibility: Maintains logged-in user profile, JWT token synchronization with localStorage, and login/register/logout actions
+Related Feature / Module: Authentication State Management
+
+Relative File Path: frontend/src/context/CartContext.jsx
+File Purpose: Shopping cart state context provider
+Main Responsibility: Manages item additions, removals, quantity stepper math, promotional coupon discounts, tax, shipping, and persistence
+Related Feature / Module: Cart State Management
+
+Relative File Path: frontend/src/context/NotificationContext.jsx
+File Purpose: Global toast notifications provider
+Main Responsibility: Renders floating success, error, and info toast alert messages across all pages
+Related Feature / Module: User Feedback & Notifications
+
+----------------------------------------------------------------------------------------------------
+10. FRONTEND REUSABLE COMPONENTS
+----------------------------------------------------------------------------------------------------
+Relative File Path: frontend/src/components/Navbar.jsx
+File Purpose: Top navigation header component
+Main Responsibility: Renders brand logo, search bar, category navigation, cart item counter badge, user account dropdown, and mobile hamburger menu
+Related Feature / Module: Navigation & Header
+
+Relative File Path: frontend/src/components/Footer.jsx
+File Purpose: Platform footer component
+Main Responsibility: Displays platform information, customer support links, payment badges, newsletter signup form, and copyright metadata
+Related Feature / Module: Navigation & Footer
+
+Relative File Path: frontend/src/components/ProductCard.jsx
+File Purpose: Reusable product catalog card component
+Main Responsibility: Displays product image thumbnail, discount badge, star ratings, price, stock indicator, and instant "Add to Cart" button
+Related Feature / Module: Product Catalog Presentation
+
+----------------------------------------------------------------------------------------------------
+11. FRONTEND PAGES & VIEWS
+----------------------------------------------------------------------------------------------------
+Relative File Path: frontend/src/pages/HomePage.jsx
+File Purpose: Storefront landing page view
+Main Responsibility: Renders marketing hero promotional banner, dynamic category filter pills, search feedback, and catalog grid
+Related Feature / Module: Storefront Presentation
+
+Relative File Path: frontend/src/pages/ProductDetailPage.jsx
+File Purpose: Detailed product specifications view
+Main Responsibility: Displays high-res product image gallery, detailed description, technical specs, stock quantity selector, user reviews, and Add to Cart action
+Related Feature / Module: Product Inspection
+
+Relative File Path: frontend/src/pages/CartPage.jsx
+File Purpose: Shopping cart view
+Main Responsibility: Displays cart item rows, quantity increment/decrement controls, item removal buttons, promo coupon entry form, and order subtotal breakdown
+Related Feature / Module: Shopping Cart Management
+
+Relative File Path: frontend/src/pages/CheckoutPage.jsx
+File Purpose: Multi-step checkout view
+Main Responsibility: Collects shipping destination address, offers payment method selection, validates order payload, and executes order submission
+Related Feature / Module: Checkout & Order Submission
+
+Relative File Path: frontend/src/pages/OrderSuccessPage.jsx
+File Purpose: Post-purchase order confirmation view
+Main Responsibility: Displays assigned MongoDB order identifier, estimated delivery window, payment confirmation badge, and itemized order receipt
+Related Feature / Module: Order Confirmation
+
+Relative File Path: frontend/src/pages/UserProfilePage.jsx
+File Purpose: Customer account and order history portal
+Main Responsibility: Provides tabbed interface for editing user personal profile/contact details and reviewing historic customer order fulfillment states with tracking numbers
+Related Feature / Module: User Profile & Order Ledger
+
+Relative File Path: frontend/src/pages/AdminDashboardPage.jsx
+File Purpose: Administrative management console
+Main Responsibility: Protected view providing top-level KPI revenue cards, product inventory management table with Add Product modal, and customer order fulfillment dispatching
+Related Feature / Module: Administrative Console & Inventory CRUD
+
+Relative File Path: frontend/src/pages/LoginPage.jsx
+File Purpose: User authentication view
+Main Responsibility: Provides email and password credential inputs, quick-fill demo account shortcuts (Customer and Admin), form validation, and error messaging
+Related Feature / Module: User Onboarding
+
+Relative File Path: frontend/src/pages/RegisterPage.jsx
+File Purpose: New customer registration view
+Main Responsibility: Provides user sign-up form with name, email, password, and confirmation fields, client validation, and account creation
+Related Feature / Module: User Onboarding
+====================================================================================================
