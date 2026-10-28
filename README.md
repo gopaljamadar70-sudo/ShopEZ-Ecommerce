@@ -318,7 +318,6 @@ Documentation/
 - **Student Developer:** **Gopal Jamadar**
 - **GitHub Profile:** [@gopaljamadar70-sudo](https://github.com/gopaljamadar70-sudo)
 - **Academic Course:** Final Year Capstone Project (B.Tech Computer Science & Engineering)
-- **Team ID:** `TEAM-SHOPEZ-2026-01`
 - **Evaluation Year:** 2026
 - **Repository URL:** [https://github.com/gopaljamadar70-sudo/ShopEZ-Ecommerce](https://github.com/gopaljamadar70-sudo/ShopEZ-Ecommerce)
 
