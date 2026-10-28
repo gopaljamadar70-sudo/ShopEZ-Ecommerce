@@ -8,9 +8,7 @@
 - **Student Name:** Gopal Jamadar
 - **Department / Class:** Computer Science & Engineering / Final Year B.Tech
 - **College / Institution:** Department of Computer Engineering
-- **Project Guide / Supervisor:** Prof. Senior Project Mentor
 - **Project Name:** ShopEZ E-Commerce Application
-- **Evaluation Date:** 28 October 2026
 
 ---
 
