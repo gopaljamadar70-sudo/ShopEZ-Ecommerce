@@ -8,6 +8,7 @@
 [![Node.js](https://img.shields.io/badge/Backend-Node.js_Express-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Database](https://img.shields.io/badge/Database-MongoDB_(In--Memory_Fallback)-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![Tests](https://img.shields.io/badge/Tests-24%2F24_Passed_(100%25)-brightgreen?style=for-the-badge&logo=vitest&logoColor=white)](https://github.com/gopaljamadar70-sudo/ShopEZ-Ecommerce)
+[![Demo Video](https://img.shields.io/badge/Demo_Video-Watch_on_Google_Drive-EA4335?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/drive/folders/1tL2HBGt9wrXc3-ev5OYJkVSLI895C2in?usp=drive_link)
 [![Codespaces](https://img.shields.io/badge/Codespaces-1--Click_Launch-blueviolet?style=for-the-badge&logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=gopaljamadar70-sudo/ShopEZ-Ecommerce)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
@@ -16,6 +17,7 @@
 **A full-stack, enterprise-grade e-commerce application built for academic capstone evaluation and real-world scalability.**  
 Connects **Digital Shoppers** and **Store Administrators** into a secure, reactive, and transparent online retail lifecycle featuring **server-side price tampering protection**, **atomic inventory stock decrementing**, **promotional coupon verification**, and **zero-configuration embedded database execution**.
 
+[🎥 Demo Video](#-project-demonstration-video) &nbsp;|&nbsp;
 [🚀 Quick Start](#-quick-start--setup-guide) &nbsp;|&nbsp;
 [🔑 Demo Accounts](#-pre-configured-demo-accounts--coupons) &nbsp;|&nbsp;
 [✨ Key Capabilities](#-key-system-capabilities) &nbsp;|&nbsp;
@@ -142,6 +144,17 @@ The application database is pre-seeded with realistic demonstration accounts and
 
 ---
 
+## 🎥 Project Demonstration Video
+
+A comprehensive video walkthrough demonstrating the live functionality of the ShopEZ platform, including customer browsing, dynamic category filtering, real-time search, shopping cart management, promotional coupon validation (`WELCOME10`), simulated checkout, order tracking, and the administrative dashboard:
+
+👉 **[🎬 Watch ShopEZ Project Demonstration Video on Google Drive](https://drive.google.com/drive/folders/1tL2HBGt9wrXc3-ev5OYJkVSLI895C2in?usp=drive_link)**
+
+> [!TIP]
+> Click the link above to view or download the high-definition project demonstration video (`ShopEZ E-Commerce Demo.mp4`) hosted on Google Drive.
+
+---
+
 ## 🚀 Quick Start & Setup Guide
 
 ### System Prerequisites
@@ -263,6 +276,8 @@ Documentation/
 ```
 
 ### 📘 Core Project Documentation Downloads & Links
+- 🎥 **[Watch Project Demonstration Video on Google Drive](https://drive.google.com/drive/folders/1tL2HBGt9wrXc3-ev5OYJkVSLI895C2in?usp=drive_link)**  
+  *High-definition video walkthrough showcasing live customer shopping, checkout, and admin features.*
 - 📄 **[Download 21-Page Comprehensive Project Report (Shopez_Project_Report_21_Pages.docx)](Documentation/Project%20Report/Shopez_Project_Report_21_Pages.docx)**  
   *Complete 21-page college capstone report formatted according to formal academic rubrics with architecture diagrams, schema specifications, and evaluation results.*
 - 📑 **[View 5-Phase Master Capstone Documentation (ShopEZ_Project_Phase_Documentation.md)](Documentation/ShopEZ_Project_Phase_Documentation.md)**  

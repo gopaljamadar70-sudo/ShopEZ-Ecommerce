@@ -26,6 +26,18 @@ lerna-debug.log*
 *.zip
 *.tar.gz
 
+# Media & Large Videos (Hosted on Google Drive)
+*.mp4
+*.mkv
+*.avi
+Demo video/
+
+# Local Preview & Tunnel Logs
+live-domain.txt
+live-public-url.txt
+live-preview.log
+scripts/tools/
+
 # Editor & OS files
 .vscode/
 .idea/
